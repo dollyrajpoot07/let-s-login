@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+body {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #5bccf6;
+	padding: 30px;
+}
+.model {
+	position: relative;
+	max-width: 850px;
+	width: 100%;
+	background: #fff;
+	padding: 40px 30px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+	perspective: 2700px;
+}
+.model .pageCover {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	height: 100%;
+	width: 50%;
+	z-index: 98;
+	transition: all 1s ease;
+	transform-origin: left;
+	transform-style: preserve-3d;
+}
+.model .pageCover::before {
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #5bccf6;
+	opacity: 0.5;
+	z-index: 100;
+}
+.model .pageCover::after {
+	content: "";
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #5bccf6;
+	opacity: 0.5;
+	z-index: 100;
+	transform: rotateY(180deg);
+}
+.model #turn:checked ~ .pageCover {
+	transform: rotateY(-180deg);
+}
+.model .pageCover img {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	z-index: 12;
+	backface-visibility: hidden;
+}
+.model .pageCover .back .backImg {
+	transform: rotateY(180deg);
+}
+.model .pageCover .data {
+	position: absolute;
+	z-index: 111;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.pageCover .data .data-1,
+.pageCover .data .data-2 {
+	font-size: 26px;
+	font-weight: 600;
+	color: #fff;
+	text-align: center;
+	backface-visibility: hidden;
+}
+.pageCover .back .data .data-1,
+.pageCover .back .data .data-2 {
+	transform: rotateY(180deg);
+}
+.pageCover .data .data-2 {
+	font-size: 15px;
+	font-weight: 500;
+}
+.model form {
+	height: 100%;
+	width: 100%;
+	background: white;
+}
+.model .content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.content .login,
+.content .signup {
+	width: calc(100% / 2 - 25px);
+}
+form .content .title {
+	position: relative;
+	font-size: 24px;
+	font-weight: 500;
+	color: #333;
+}
+form .content .title:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 3px;
+	width: 25px;
+	background: #5bccf6;
+}
+form .signup .title:before {
+	width: 20px;
+}
+form .content .input {
+	margin-top: 30px;
+}
+form .content .input-box {
+	display: flex;
+	align-items: center;
+	height: 50px;
+	width: 100%;
+	margin: 10px 0;
+	position: relative;
+}
+.content .input-box input {
+	height: 100%;
+	width: 100%;
+	outline: none;
+	border: none;
+	padding: 0 30px;
+	font-size: 16px;
+	font-weight: 500;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.8);
+	transition: all 0.3s ease;
+}
+.content .input-box input:focus,
+.content .input-box input:valid {
+	border-color: black;
+}
+.content .input-box i {
+	position: absolute;
+	color: red;
+	font-size: 17px;
+}
+form .content .data {
+	font-size: 13px;
+	font-weight: 500;
+	color: #333;
+}
+form .content .data a {
+	text-decoration: none;
+}
+form .content .data a:hover {
+	text-decoration: underline;
+}
+form .content .button {
+	color: #fff;
+	margin-top: 40px;
+}
+form .content .button input {
+	color: #fff;
+	background: #5bccf6;
+	border-radius: 6px;
+	padding: 0;
+	cursor: pointer;
+	transition: all 0.4s ease;
+}
+form .content .button input:hover {
+	background: #5bccf6;
+}
+form .content label {
+	color: red;
+	cursor: pointer;
+}
+form .content label:hover {
+	text-decoration: underline;
+}
+form .content .login-data,
+form .content .sign-up-data {
+	text-align: center;
+	margin-top: 25px;
+}
+.model #turn {
+	display: none;
+}
+@media (max-width: 730px) {
+	.model .pageCover {
+		display: none;
+	}
+	.content .login,
+	.content .signup {
+		width: 100%;
+	}
+	.content .signup {
+		display: none;
+	}
+	.model #turn:checked ~ form .signup {
+		display: block;
+	}
+	.model #turn:checked ~ form .login {
+		display: none;
+	}
+}
